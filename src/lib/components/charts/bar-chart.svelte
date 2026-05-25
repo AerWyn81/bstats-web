@@ -7,10 +7,10 @@
     interface Props {
         data: { name: string; data: number[] }[];
         categories: string[];
-        valueName?: string;
     }
 
-    let { data, categories, valueName = 'Value' }: Props = $props();
+    let { data, categories }: Props = $props();
+    const valueName = 'Servers';
 
     let chartContainer: HTMLDivElement;
     let chartInstance: echarts.ECharts | null = null;
@@ -98,6 +98,9 @@
                 }
             },
             legend: {
+                // A single series has no meaningful legend (it would just show
+                // "Series 1" / the value name), so hide it.
+                show: data.length > 1,
                 orient: 'horizontal',
                 top: 10,
                 ...theme.legend
@@ -106,7 +109,7 @@
                 left: '3%',
                 right: '8%',
                 bottom: '3%',
-                top: 50,
+                top: data.length > 1 ? 50 : 20,
                 containLabel: true
             },
             xAxis: {
