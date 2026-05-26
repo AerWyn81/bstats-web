@@ -203,7 +203,7 @@
                 </p>
             </div>
             <div class="rounded-2xl border border-slate-200 bg-white p-4 md:p-6">
-                <BarChart data={barData} categories={barCategories} />
+                <BarChart data={barData} categories={barCategories} valueName="Servers" />
             </div>
             {@render Example('Simple bar chart', codeSimpleBarChart)}
             {@render Example('Advanced bar chart', codeAdvancedBarChart)}
